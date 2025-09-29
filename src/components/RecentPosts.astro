@@ -1,0 +1,30 @@
+---
+// RecentPosts section component
+import { getCollection } from 'astro:content';
+import PostCard from './PostCard.astro';
+
+export interface Props {
+    title?: string;
+    limit?: number;
+}
+
+const { title = "Recent Assignments", limit = 3 } = Astro.props;
+
+// Get posts from content collection
+const allPosts = await getCollection('posts');
+const posts = allPosts
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, limit);
+---
+
+<section class="recent-posts">
+    <h3>{title}</h3>
+    <div class="posts-grid">
+        {posts.map(post => (
+            <PostCard post={post} />
+        ))}
+    </div>
+    <div class="recent-posts-actions">
+        <a href="/~andres.cruz/coursework/" class="view-more-btn">More Assignments</a>
+    </div>
+</section>

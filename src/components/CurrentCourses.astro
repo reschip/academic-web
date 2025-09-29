@@ -1,0 +1,83 @@
+---
+// CurrentCourses component
+export interface Task {
+    title: string;
+    dueDate?: string;
+}
+
+export interface Course {
+    title: string;
+    description: string;
+    tasks?: Task[];
+}
+
+export interface Props {
+    title?: string;
+    courses?: Course[];
+    tasks?: Task[];
+}
+
+const { 
+    title = "Current Courses",
+    courses = [
+        {
+            title: "Algorithm Analysis and Design",
+            description: "Efficiency, complexity, and optimization of algorithms. Study of computational complexity and algorithm design techniques."
+        },
+        {
+            title: "Artificial Intelligence",
+            description: "Introduction to AI concepts, machine learning fundamentals, and intelligent systems."
+        },
+        {
+            title: "Advanced Programming",
+            description: "Advanced programming techniques, software engineering, and system design."
+        },
+        {
+            title: "Discrete Mathematics",
+            description: "Mathematical foundations for computer science including logic, set theory, combinatorics, and graph theory."
+        }
+    ],
+    tasks = [
+        {
+            title: "Assignment 1: Line Drawing",
+            dueDate: "September 15, 2025"
+        },
+        {
+            title: "Assignment 2: Complexity Analysis",
+            dueDate: "October 8, 2025"
+        },
+        {
+            title: "Assignment 3: Maximum Subarray Problem",
+            dueDate: "October 2, 2025"
+        }
+    ]
+} = Astro.props;
+---
+
+<section class="current-courses">
+    <h3>{title}</h3>
+    
+    <div class="courses-grid">
+        {courses.map(course => (
+            <div class="course-card">
+                <h4 class="course-title">{course.title}</h4>
+                <p class="course-description">{course.description}</p>
+            </div>
+        ))}
+    </div>
+    
+    <div class="tasks-section">
+        <h3>Tasks</h3>
+        
+        <div class="tasks-list">
+            {tasks.map(task => (
+                <div class="task-item">
+                    <h4 class="task-title">{task.title}</h4>
+                    {task.dueDate && (
+                        <p class="task-due-date">Due: {task.dueDate}</p>
+                    )}
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

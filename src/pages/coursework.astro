@@ -1,0 +1,25 @@
+---
+// Coursework page - assignments and tasks
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+// Get all posts from content collection
+const allPosts = await getCollection('posts');
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Coursework - Andrés Cruz Chipol" description="Academic assignments and coursework projects from Computer Science Master's program at CINVESTAV">
+    <div class="page-header">
+        <h1>Coursework</h1>
+        <p>Academic assignments and projects from my current courses</p>
+    </div>
+
+    <section class="assignments-section">
+        <div class="assignments-grid">
+            {posts.map(post => (
+                <PostCard post={post} />
+            ))}
+        </div>
+    </section>
+</BaseLayout>

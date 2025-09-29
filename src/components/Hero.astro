@@ -1,0 +1,36 @@
+---
+// Hero section component
+export interface Props {
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    socialLinks?: Array<{
+        name: string;
+        url: string;
+    }>;
+}
+
+const { 
+    title = "Hello, I'm",
+    subtitle = "Andrés Cruz Chipol", 
+    description = "Master's Student in Computer Science at CINVESTAV. Passionate about AI, Machine Learning, and Computer Vision.",
+    socialLinks = [
+        { name: "GitHub", url: "https://github.com/reschip" },
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/andreschipol/" },
+        { name: "X / Twitter", url: "https://x.com/reschip" },
+        { name: "Personal Website", url: "https://www.andreschipol.com" }
+    ]
+} = Astro.props;
+---
+
+<section class="hero">
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <p>{description}</p>
+    
+    <div class="social-links">
+        {socialLinks.map(link => (
+            <a href={link.url} target="_blank" rel="noopener noreferrer">{link.name}</a>
+        ))}
+    </div>
+</section>

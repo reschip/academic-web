@@ -1,0 +1,54 @@
+---
+// Dynamic page for individual posts
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, pubDate, readTime, heroImage, tags } = post.data;
+const formattedDate = pubDate.toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout title={`${title} - Coursework`}>
+    <div class="post-header">
+        <div class="post-header-content">
+            <div class="post-header-text">
+                <h1 class="post-title-full">{title}</h1>
+            </div>
+            {heroImage && (
+                <div class="post-hero-image-container">
+                    <img src={heroImage} alt={title} class="post-hero-image-full" />
+                </div>
+            )}
+            <div class="post-meta-full">
+                <span class="post-date-full">{formattedDate}</span>
+                {readTime && (
+                    <span class="post-read-time-full">{readTime}</span>
+                )}
+            </div>
+            {tags && tags.length > 0 && (
+                <div class="post-tags">
+                    {tags.map(tag => (
+                        <span class="post-tag">{tag}</span>
+                    ))}
+                </div>
+            )}
+        </div>
+    </div>
+
+    <article class="post-content-full">
+        <Content />
+    </article>
+</BaseLayout>

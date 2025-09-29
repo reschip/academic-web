@@ -1,0 +1,1698 @@
+/* Global CSS for Saral Theme */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Import KaTeX CSS */
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css');
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fafafa;
+    backdrop-filter: blur(10px);
+    border-bottom: none;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #333;
+}
+
+.theme-toggle {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: #e5e5e5;
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+    transform: rotate(180deg);
+}
+
+/* Main Content */
+main {
+    margin-top: 100px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 0 6rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #666;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.hero h2 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: #333;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 0.7;
+}
+
+/* Recent Posts */
+.recent-posts {
+    padding: 4rem 0;
+}
+
+.recent-posts-actions {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.view-more-btn {
+    display: inline-block;
+    background: transparent;
+    color: #999;
+    padding: 0.5rem 0;
+    border-radius: 0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: none;
+    border-bottom: 1px solid #999;
+    cursor: pointer;
+}
+
+.view-more-btn:hover {
+    color: #666;
+    border-bottom-color: #666;
+}
+
+/* Dark mode for view more button */
+body.dark-mode .view-more-btn {
+    color: #a0a0a0;
+    border-bottom-color: #a0a0a0;
+}
+
+body.dark-mode .view-more-btn:hover {
+    color: #e5e5e5;
+    border-bottom-color: #e5e5e5;
+}
+
+/* Current Courses */
+.current-courses {
+    padding: 4rem 0;
+}
+
+.current-courses h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 0;
+}
+
+.course-card {
+    background: transparent;
+    border-radius: 0;
+    padding: 1.5rem 0;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    transition: transform 0.2s ease;
+}
+
+.course-card:hover {
+    transform: translateX(5px);
+}
+
+.course-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.course-description {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.course-tasks {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.course-tasks-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.course-tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tasks-section {
+    background: transparent;
+    border-radius: 0;
+    padding: 2rem 0;
+    border: none;
+    border-top: 1px solid #e5e5e5;
+}
+
+.tasks-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.task-item {
+    background: transparent;
+    border-radius: 0;
+    padding: 0.75rem 0;
+    border-left: none;
+    border-bottom: 1px solid #f5f5f5;
+    transition: transform 0.2s ease;
+}
+
+.task-item:hover {
+    transform: translateX(3px);
+}
+
+.task-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+.task-due-date {
+    color: #666;
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.recent-posts h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.post-card {
+    background: transparent;
+    border-radius: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 2rem;
+}
+
+.post-card:hover {
+    transform: translateY(-3px);
+}
+
+.post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.post-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-image {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+}
+
+/* Different background styles for post images */
+.post-image-1 {
+    background: #222;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            #333 0px,
+            #333 2px,
+            #444 2px,
+            #444 4px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            #2a2a2a 0px,
+            #2a2a2a 3px,
+            #3a3a3a 3px,
+            #3a3a3a 6px
+        );
+}
+
+.post-image-2 {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><circle cx="50" cy="150" r="20" fill="rgba(255,255,255,0.1)"/><circle cx="350" cy="50" r="15" fill="rgba(255,255,255,0.08)"/><path d="M0 100 Q100 80 200 90 T400 85" stroke="rgba(255,255,255,0.15)" fill="none" stroke-width="2"/></svg>');
+}
+
+.post-image-3 {
+    background: linear-gradient(to bottom, #0ea5e9 0%, #0284c7 100%);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><ellipse cx="300" cy="100" rx="60" ry="40" fill="rgba(255,255,255,0.1)"/><ellipse cx="100" cy="140" rx="40" ry="25" fill="rgba(255,255,255,0.08)"/><path d="M0 120 Q50 110 100 115 T200 120 T400 125" stroke="rgba(255,255,255,0.2)" fill="none" stroke-width="3"/></svg>');
+}
+
+.post-image-4 {
+    background: linear-gradient(to bottom, #f59e0b 0%, #d97706 60%, #92400e 100%);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><path d="M0 160 Q100 140 200 145 T400 150" stroke="rgba(0,0,0,0.4)" fill="none" stroke-width="4"/><path d="M50 180 Q150 170 250 175 T380 180" stroke="rgba(0,0,0,0.3)" fill="none" stroke-width="2"/><circle cx="350" cy="40" r="20" fill="rgba(255,255,255,0.3)"/><polygon points="100,180 120,160 140,180" fill="rgba(0,0,0,0.6)"/><polygon points="280,180 300,150 320,180" fill="rgba(0,0,0,0.5)"/></svg>');
+}
+
+.post-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+.post-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.post-course {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3b82f6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.post-content {
+    padding: 1.5rem 0;
+    background: transparent;
+}
+
+.post-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.post-excerpt {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.post-date {
+    font-weight: 500;
+}
+
+.post-read-time {
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    main {
+        padding: 0 1.5rem;
+    }
+    
+    .hero h2 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    main {
+        padding: 0 1rem;
+    }
+
+    .hero {
+        padding: 2rem 0 4rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .assignments-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1.5rem 0 3rem;
+    }
+
+    .hero h1 {
+        font-size: 1.2rem;
+    }
+
+    .hero h2 {
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .page-header h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+
+    .post-title {
+        font-size: 1.1rem;
+    }
+
+    .assignment-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e5e5e5;
+}
+
+body.dark-mode header {
+    background: #1a1a1a;
+    border-bottom: none;
+}
+
+body.dark-mode .logo {
+    color: #e5e5e5;
+}
+
+body.dark-mode .nav-links a {
+    color: #a0a0a0;
+}
+
+body.dark-mode .nav-links a:hover {
+    color: #e5e5e5;
+}
+
+body.dark-mode .theme-toggle {
+    background: #333;
+    border-color: #555;
+    color: #e5e5e5;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: #444;
+}
+
+body.dark-mode .hero h1 {
+    color: #a0a0a0;
+}
+
+body.dark-mode .hero h2 {
+    color: #e5e5e5;
+}
+
+body.dark-mode .hero p {
+    color: #a0a0a0;
+}
+
+body.dark-mode .recent-posts h3 {
+    color: #e5e5e5;
+}
+
+body.dark-mode .post-card {
+    background: transparent;
+}
+
+body.dark-mode .post-card:hover {
+    transform: translateY(-5px);
+}
+
+body.dark-mode .social-links a {
+    color: #60a5fa;
+}
+
+body.dark-mode .post-title {
+    color: #e5e5e5;
+}
+
+body.dark-mode .post-excerpt {
+    color: #a0a0a0;
+}
+
+body.dark-mode .post-meta {
+    color: #666;
+}
+
+/* Dark mode for Current Courses */
+body.dark-mode .current-courses h3 {
+    color: #e5e5e5;
+}
+
+body.dark-mode .course-card {
+    background: transparent;
+    border-bottom-color: #444;
+}
+
+body.dark-mode .course-title {
+    color: #e5e5e5;
+}
+
+body.dark-mode .course-description {
+    color: #a0a0a0;
+}
+
+body.dark-mode .course-tasks {
+    border-top-color: #444;
+}
+
+body.dark-mode .course-tasks-title {
+    color: #e5e5e5;
+}
+
+body.dark-mode .tasks-section {
+    background: transparent;
+    border-top-color: #555;
+}
+
+body.dark-mode .tasks-title {
+    color: #e5e5e5;
+}
+
+body.dark-mode .task-item {
+    background: transparent;
+    border-bottom-color: #444;
+}
+
+body.dark-mode .task-title {
+    color: #e5e5e5;
+}
+
+body.dark-mode .task-due-date {
+    color: #a0a0a0;
+}
+
+/* Footer Styles */
+.footer {
+    background: transparent;
+    border-top: 1px solid #e5e5e5;
+    padding: 3rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-links {
+    margin-bottom: 2rem;
+}
+
+.footer-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.footer-links-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-links-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-column-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.footer-link {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #333;
+}
+
+.footer-bottom {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 2rem;
+}
+
+.footer-copyright {
+    text-align: center;
+}
+
+.copyright-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.author-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.institution-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Dark mode for Footer */
+body.dark-mode .footer {
+    border-top-color: #444;
+}
+
+body.dark-mode .footer-section-title {
+    color: #e5e5e5;
+}
+
+body.dark-mode .footer-column-title {
+    color: #e5e5e5;
+}
+
+body.dark-mode .footer-link {
+    color: #a0a0a0;
+}
+
+body.dark-mode .footer-link:hover {
+    color: #e5e5e5;
+}
+
+body.dark-mode .footer-bottom {
+    border-top-color: #444;
+}
+
+body.dark-mode .copyright-text {
+    color: #a0a0a0;
+}
+
+body.dark-mode .author-text {
+    color: #e5e5e5;
+}
+
+body.dark-mode .institution-text {
+    color: #a0a0a0;
+}
+
+/* Page Layout Styles */
+.page-header {
+    padding: 0;
+    text-align: left;
+    border-bottom: none;
+    margin-bottom: 0;
+    max-width: 800px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* About page specific header with padding */
+.about-header-content {
+    padding: 4rem 0 2rem;
+}
+
+.page-header h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: none;
+    margin: 0;
+}
+
+/* Assignments/Coursework Styles */
+.assignments-section {
+    padding: 2rem 0;
+}
+
+.assignments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.assignment-card {
+    background: transparent;
+    border-radius: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 2rem;
+}
+
+.assignment-card:hover {
+    transform: translateY(-3px);
+}
+
+.assignment-image {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+}
+
+.assignment-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+.assignment-content {
+    padding: 0;
+}
+
+.assignment-course {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3b82f6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.assignment-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.assignment-excerpt {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.assignment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.assignment-date {
+    font-weight: 500;
+}
+
+.assignment-read-time {
+    opacity: 0.7;
+}
+
+/* About Page Styles */
+.about-content {
+    max-width: 800px;
+    margin: 0;
+    padding: 0;
+}
+
+.about-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.about-section:last-child {
+    border-bottom: none;
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.interests-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.interests-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f5f5f5;
+    color: #666;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.interests-list li:before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.interests-list li:last-child {
+    border-bottom: none;
+}
+
+/* About page specific styles */
+.about-header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0;
+    padding: 0;
+}
+
+.about-image {
+    flex-shrink: 0;
+}
+
+.about-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 3px solid #e5e5e5;
+}
+
+.about-header-text {
+    flex: 1;
+}
+
+.about-header-text h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.about-header-text p {
+    font-size: 1.3rem;
+    color: #666;
+    margin: 0;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0;
+    text-align: left;
+    padding: 0;
+    margin-top: 0;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+/* Dark mode for new pages */
+body.dark-mode .page-header {
+    border-bottom: none;
+}
+
+body.dark-mode .page-header h1 {
+    color: #e5e5e5;
+}
+
+body.dark-mode .page-header p {
+    color: #a0a0a0;
+}
+
+body.dark-mode .assignment-card {
+    border-bottom-color: #444;
+}
+
+body.dark-mode .assignment-course {
+    color: #60a5fa;
+}
+
+body.dark-mode .assignment-title {
+    color: #e5e5e5;
+}
+
+body.dark-mode .assignment-excerpt {
+    color: #a0a0a0;
+}
+
+body.dark-mode .assignment-meta {
+    color: #666;
+}
+
+body.dark-mode .about-section {
+    border-bottom-color: #444;
+}
+
+body.dark-mode .about-section h2 {
+    color: #e5e5e5;
+}
+
+body.dark-mode .about-section p {
+    color: #a0a0a0;
+}
+
+body.dark-mode .interests-list li {
+    color: #a0a0a0;
+    border-bottom-color: #444;
+}
+
+body.dark-mode .interests-list li:before {
+    color: #60a5fa;
+}
+
+/* Dark mode for About page */
+body.dark-mode .about-image img {
+    border-color: #444;
+}
+
+body.dark-mode .about-header-text h1 {
+    color: #e5e5e5;
+}
+
+body.dark-mode .about-header-text p {
+    color: #a0a0a0;
+}
+
+body.dark-mode .about-text p {
+    color: #a0a0a0;
+}
+
+/* Inline code styling */
+p code,
+li code,
+span code {
+    background: #f5f5f5 !important;
+    color: #333 !important;
+    padding: 0.2rem 0.4rem !important;
+    border-radius: 3px !important;
+    font-size: 0.9em !important;
+}
+
+/* Inline code in dark mode */
+body.dark-mode p code,
+body.dark-mode li code,
+body.dark-mode span code {
+    background: #2a2a2a !important;
+    color: #e5e5e5 !important;
+}
+
+/* LaTeX formulas in dark mode */
+body.dark-mode .katex {
+    color: #e5e5e5 !important;
+}
+
+body.dark-mode .katex-display {
+    color: #e5e5e5 !important;
+}
+
+/* Ensure syntax highlighting colors are visible */
+pre code {
+    color: inherit !important;
+}
+
+/* Force syntax highlighting colors */
+.expressive-code pre code,
+.expressive-code code {
+    color: inherit !important;
+}
+
+/* Dark mode syntax highlighting */
+body.dark-mode .expressive-code pre code,
+body.dark-mode .expressive-code code {
+    color: inherit !important;
+}
+
+/* Expressive Code Block Styling */
+.expressive-code-block {
+    border-radius: 8px !important;
+    border: 1px solid #e5e5e5 !important;
+    margin: 1.5rem 0 !important;
+    overflow: hidden !important;
+}
+
+.expressive-code-block pre {
+    margin: 0 !important;
+    padding: 1.5rem !important;
+    background: #f8f9fa !important;
+    border-radius: 0 !important;
+    border: none !important;
+}
+
+.expressive-code-block code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Dark mode for expressive code blocks */
+body.dark-mode .expressive-code-block {
+    border-color: #444 !important;
+}
+
+body.dark-mode .expressive-code-block pre {
+    background: #1a1a1a !important;
+}
+
+/* Ensure consistent styling for all code blocks */
+.post-content-full pre,
+.post-content-full code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+}
+
+/* Expressive Code - Native styling only */
+
+/* Post content should maintain normal colors */
+body.dark-mode .post-content-full {
+    color: #a0a0a0;
+}
+
+/* Reduce spacing in post content */
+.post-content-full h1,
+.post-content-full h3,
+.post-content-full h4,
+.post-content-full h5,
+.post-content-full h6 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.post-content-full h2 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.375rem !important;
+}
+
+.post-content-full p {
+    margin-bottom: 0.5rem !important;
+}
+
+.post-content-full ul,
+.post-content-full ol {
+    margin-bottom: 0 !important;
+    padding-left: 1.5rem !important;
+}
+
+.post-content-full li {
+    margin-bottom: 0.25rem !important;
+}
+
+.post-content-full pre {
+    margin: 1rem 0 !important;
+}
+
+.post-content-full blockquote {
+    margin: 1rem 0 !important;
+    padding: 0.75rem 1rem !important;
+}
+
+.post-content-full hr {
+    margin: 1.5rem 0 !important;
+}
+
+/* Reduce spacing in tasks section */
+.tasks-section {
+    margin-top: 0.5rem !important;
+}
+
+.tasks-list {
+    gap: 0.5rem !important;
+}
+
+.task-item {
+    padding: 0.25rem 0 !important;
+    border-bottom: none !important;
+}
+
+.task-title {
+    margin-bottom: 0.1rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+}
+
+.task-due-date {
+    margin: 0 !important;
+    font-size: 0.85rem !important;
+}
+
+.post-content-full p {
+    font-size: 1.1rem;
+}
+
+body.dark-mode .post-content-full p {
+    color: #a0a0a0;
+}
+
+body.dark-mode .post-content-full h1,
+body.dark-mode .post-content-full h2,
+body.dark-mode .post-content-full h3,
+body.dark-mode .post-content-full h4,
+body.dark-mode .post-content-full h5,
+body.dark-mode .post-content-full h6 {
+    color: #e5e5e5 !important;
+}
+
+/* Fix post title in both modes */
+.post-title-full {
+    color: #333 !important;
+}
+
+body.dark-mode .post-title-full {
+    color: #e5e5e5 !important;
+}
+
+body.dark-mode .post-content-full li {
+    color: #a0a0a0;
+}
+
+body.dark-mode .post-content-full ul,
+body.dark-mode .post-content-full ol {
+    color: #a0a0a0;
+}
+
+body.dark-mode .post-content-full blockquote {
+    color: #a0a0a0;
+    border-left-color: #444;
+}
+
+/* Post content code styling */
+.post-content-full p code,
+.post-content-full li code {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    padding: 0.2rem 0.4rem !important;
+    border-radius: 3px !important;
+    font-size: 0.9em !important;
+}
+
+body.dark-mode .post-content-full p code,
+body.dark-mode .post-content-full li code {
+    background: #3a3a3a !important;
+    color: #e5e5e5 !important;
+}
+
+/* Responsive design for About page */
+@media (max-width: 768px) {
+    .about-header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .about-image img {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+    }
+    
+    .about-header-text h1 {
+        font-size: 2.2rem;
+    }
+    
+    .about-header-text p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Individual Post Page Styles */
+.post-header {
+    padding: 4rem 0 2rem;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 3rem;
+}
+
+.post-header-content {
+    max-width: 800px;
+    margin: 0;
+    padding: 0;
+}
+
+.post-hero-image-container {
+    margin-bottom: 2rem;
+}
+
+.post-hero-image-full {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    aspect-ratio: 16/9;
+}
+
+.post-header-text {
+    text-align: left;
+}
+
+.post-course-badge {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.post-title-full {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.post-description {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.post-meta-full {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: #999;
+}
+
+.post-date-full {
+    font-weight: 500;
+}
+
+.post-read-time-full {
+    opacity: 0.7;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.post-tag {
+    background: #f5f5f5;
+    color: #666;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.post-content-full {
+    max-width: 800px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.post-content-full h1,
+.post-content-full h2,
+.post-content-full h3,
+.post-content-full h4,
+.post-content-full h5,
+.post-content-full h6 {
+    color: #333;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.post-content-full h1 {
+    font-size: 2.5rem;
+}
+
+.post-content-full h2 {
+    font-size: 2rem;
+}
+
+.post-content-full h3 {
+    font-size: 1.5rem;
+}
+
+.post-content-full p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.post-content-full code {
+    background: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.post-content-full pre {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid #e5e5e5;
+}
+
+.post-content-full pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.post-content-full ul,
+.post-content-full ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.post-content-full li {
+    margin-bottom: 0.5rem;
+}
+
+/* Cinvestav Info Section */
+.cinvestav-info {
+  padding: 2.5rem 0 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+.cinvestav-info-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  padding: 2rem 2.5rem;
+  max-width: 600px;
+  width: 100%;
+}
+.cinvestav-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  object-fit: contain;
+  border: 1px solid #e5e5e5;
+}
+.cinvestav-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.cinvestav-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.1rem;
+}
+.cinvestav-program {
+  font-size: 1.05rem;
+  color: #333;
+  font-weight: 500;
+}
+.cinvestav-year {
+  font-size: 0.98rem;
+  color: #666;
+}
+.cinvestav-location {
+  font-size: 0.95rem;
+  color: #999;
+}
+.cinvestav-desc {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .cinvestav-info-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+  }
+  .cinvestav-logo {
+    width: 48px;
+    height: 48px;
+  }
+  .cinvestav-title {
+    font-size: 1.05rem;
+  }
+}
+
+/* Home Intro Section */
+.home-intro {
+  padding: 2.5rem 0 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+.home-intro-content {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+  max-width: 900px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.home-intro-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 220px;
+}
+.cinvestav-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  object-fit: contain;
+  border: 1px solid #e5e5e5;
+}
+.cinvestav-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.cinvestav-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+.cinvestav-program {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+.cinvestav-year {
+  font-size: 0.95rem;
+  color: #666;
+}
+.cinvestav-location {
+  font-size: 0.93rem;
+  color: #999;
+}
+.cinvestav-desc {
+  font-size: 0.93rem;
+  color: #666;
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+.home-intro-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+.mini-about-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #333;
+}
+.mini-about-desc {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+.mini-about-btn {
+  display: inline-block;
+  font-size: 0.98rem;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+  background: transparent;
+  border-radius: 8px;
+  padding: 0.4rem 1.1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.mini-about-btn:hover {
+  background: #3b82f6;
+  color: #fff;
+}
+@media (max-width: 800px) {
+  .home-intro-content {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .home-intro-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .home-intro-left, .home-intro-right {
+    width: 100%;
+  }
+  .cinvestav-logo {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.cinvestav-green {
+  color: #00703c !important;
+}
+.cinvestav-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.aboutme-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 0.7rem;
+}
+@media (max-width: 800px) {
+  .aboutme-photo {
+    width: 48px;
+    height: 48px;
+  }
+}

@@ -1,0 +1,36 @@
+---
+// PostCard component for blog posts
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+    post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, readTime, imageType = 1, heroImage } = post.data;
+const formattedDate = pubDate.toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+});
+---
+
+<article class="post-card" role="article">
+    <a href={`/~andres.cruz/coursework/${post.slug}/`} class="post-link" aria-label={`Read more about ${title}`}>
+        <div class={`post-image post-image-${imageType}`}> 
+            {heroImage && (
+                <img src={heroImage} alt={`${title} - Assignment cover image`} class="post-hero-image" loading="lazy" />
+            )}
+        </div>
+        <div class="post-content">
+            <h4 class="post-title">{title}</h4>
+            <p class="post-excerpt">{description}</p>
+            <div class="post-meta">
+                <span class="post-date">{formattedDate}</span>
+                {readTime && (
+                    <span class="post-read-time">{readTime}</span>
+                )}
+            </div>
+        </div>
+    </a>
+</article>
