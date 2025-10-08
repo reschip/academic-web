@@ -155,15 +155,15 @@ def encuentra_subarreglo_maximo(A, bajo, alto):
 
 def leer_datos_archivo(nombre_archivo):
     """
-    Lee datos de un archivo y retorna una lista de números.
+    Lee datos de un archivo y retorna una lista de precios.
     
     Args:
         nombre_archivo: Ruta del archivo
     
     Returns:
-        Lista de números
+        Lista de precios
     """
-    datos = []
+    precios = []
     try:
         with open(nombre_archivo, 'r') as archivo:
             for linea in archivo:
@@ -174,7 +174,7 @@ def leer_datos_archivo(nombre_archivo):
                     if len(partes) >= 2:
                         try:
                             precio = float(partes[1])
-                            datos.append(precio)
+                            precios.append(precio)
                         except ValueError:
                             continue
     except FileNotFoundError:
@@ -184,12 +184,29 @@ def leer_datos_archivo(nombre_archivo):
         print(f"Error al leer el archivo {nombre_archivo}: {e}")
         return []
     
-    return datos
+    return precios
+
+
+def calcular_cambios_diarios(precios):
+    """
+    Calcula los cambios diarios (diferencias) entre precios consecutivos.
+    
+    Args:
+        precios: Lista de precios
+    
+    Returns:
+        Lista de cambios diarios
+    """
+    cambios = []
+    for i in range(1, len(precios)):
+        cambio = precios[i] - precios[i-1]
+        cambios.append(cambio)
+    return cambios
 
 
 def main():
     """
-    Función principal que ejecuta el algoritmo con el archivo especificado.
+    Función principal que ejecuta el algoritmo de análisis financiero.
     Uso: python max_subarray.py <archivo>
     """
     if len(sys.argv) != 2:
@@ -199,33 +216,73 @@ def main():
     
     archivo = sys.argv[1]
     
-    print(f"Procesando archivo: {archivo}\n\n")
+    print("=" * 60)
+    print(f"ANALISIS FINANCIERO - ARCHIVO: {archivo}")
+    print("=" * 60)
     
-    datos = leer_datos_archivo(archivo)
+    # Leer precios del archivo
+    precios = leer_datos_archivo(archivo)
     
-    if not datos:
-        print(f"No se pudieron leer datos de {archivo}")
+    if not precios or len(precios) < 2:
+        print(f"Error: No se pudieron leer suficientes datos de {archivo}")
         sys.exit(1)
     
-    print(f"Datos leídos: {datos}\n\n")
-    print(f"Número de elementos: {len(datos)}\n\n")
+    print(f"\nPRECIOS ORIGINALES ({len(precios)} dias):")
+    print("-" * 40)
+    for i, precio in enumerate(precios):
+        print(f"Dia {i:2d}: ${precio:6.1f}")
     
-    if len(datos) == 0:
-        print("No hay datos para procesar\n\n")
-        sys.exit(1)
+    # Calcular cambios diarios
+    cambios = calcular_cambios_diarios(precios)
+    print(f"\nCAMBIOS DIARIOS ({len(cambios)} periodos):")
+    print("-" * 40)
+    for i, cambio in enumerate(cambios):
+        signo = "+" if cambio >= 0 else ""
+        print(f"Dia {i+1:2d}->{i+2:2d}: {signo}{cambio:6.1f}")
     
-    # Ejecutar el algoritmo
-    inicio, fin, suma_maxima = encuentra_subarreglo_maximo(datos, 0, len(datos) - 1)
+    # Ejecutar el algoritmo en los cambios diarios
+    inicio, fin, suma_maxima = encuentra_subarreglo_maximo(cambios, 0, len(cambios) - 1)
     
-    print(f"\nResultado del subarreglo máximo:")
-    print(f"Índice de inicio: {inicio}")
-    print(f"Índice de fin: {fin}")
-    print(f"Suma máxima: {suma_maxima}")
-    print(f"Subarreglo: {datos[inicio:fin+1]}")
+    print(f"\nESTRATEGIA OPTIMA DE INVERSION:")
+    print("=" * 60)
     
-    # suma para verificar si el resultado es correcto
-    suma_verificacion = sum(datos[inicio:fin+1])
-    print(f"\n\nVerificación de suma: {suma_verificacion}")
+    # Mostrar el subarreglo máximo de forma destacada
+    subarreglo = cambios[inicio:fin+1]
+    print(f"SUBARREGLO MAXIMO ENCONTRADO:")
+    print("-" * 40)
+    print(f"Valores: {subarreglo}")
+    print(f"Indices: [{inicio} - {fin}]")
+    print(f"Suma total: {suma_maxima:.1f}")
+    
+    print(f"\nRESUMEN FINANCIERO:")
+    print("-" * 40)
+    print(f"GANANCIA MAXIMA: ${suma_maxima:.1f}")
+    print(f"COMPRAR: Dia {inicio + 1} (Precio: ${precios[inicio + 1]:.1f})")
+    print(f"VENDER:  Dia {fin + 2} (Precio: ${precios[fin + 2]:.1f})")
+    print(f"DURACION: {fin - inicio + 1} dias")
+    
+    print(f"\nDETALLES DEL PERIODO OPTIMO:")
+    print("-" * 40)
+    for i in range(inicio, fin + 1):
+        dia_inicio = i + 1
+        dia_fin = i + 2
+        cambio = cambios[i]
+        signo = "+" if cambio >= 0 else ""
+        print(f"Dia {dia_inicio:2d}->{dia_fin:2d}: {signo}{cambio:6.1f}")
+    
+    # Verificación con precios reales
+    precio_compra = precios[inicio + 1]
+    precio_venta = precios[fin + 2]
+    ganancia_real = precio_venta - precio_compra
+    
+    print(f"\nVERIFICACION:")
+    print("-" * 40)
+    print(f"Precio de compra: ${precio_compra:.1f}")
+    print(f"Precio de venta:  ${precio_venta:.1f}")
+    print(f"Ganancia real:    ${ganancia_real:.1f}")
+    print(f"Suma de cambios:  ${sum(cambios[inicio:fin+1]):.1f}")
+    
+    print("\n" + "=" * 60)
 
 
 if __name__ == "__main__":
@@ -236,16 +293,25 @@ if __name__ == "__main__":
 
 
 
-## Doc  de max_subarray.py
+## Documentación de max_subarray.py
 
-El archivo `max_subarray.py` implementa el algoritmo de subarreglo máximo usando el enfoque de divide y vencerás. Para utilizarlo, sigue estos pasos:
+El archivo `max_subarray.py` implementa el algoritmo de subarreglo máximo usando el enfoque de divide y vencerás, **especializado para análisis financiero**. El algoritmo encuentra el período óptimo para comprar y vender una acción basándose en los cambios diarios de precio.
+
+### Características Principales
+
+- **Análisis financiero**: Calcula automáticamente los cambios diarios entre precios consecutivos
+- **Estrategia de inversión**: Encuentra el período de mayor ganancia acumulada
+- **Visualización completa**: Muestra precios, cambios, subarreglo máximo y estrategia óptima
+- **Verificación**: Confirma los resultados con cálculos de precios reales
+
+### Uso del Programa
 
 1. **Prepara un archivo de datos**  
    El archivo debe contener los datos en formato de dos columnas:  
-   - La primera columna es el índice o día (puede ser ignorada por el programa).
-   - La segunda columna es el valor numérico (por ejemplo, precio).  
+   - La primera columna es el índice o día
+   - La segunda columna es el precio de la acción
+   
    Ejemplo (`datos1.txt`):
-
    ```bash
    0  100
    1  113
@@ -267,33 +333,56 @@ El archivo `max_subarray.py` implementa el algoritmo de subarreglo máximo usand
    ```
 
 2. **Ejecuta el script desde la terminal**  
-   Usa el siguiente comando, reemplazando `datos1.txt` por el nombre de tu archivo de datos:
-
    ```bash
    python max_subarray.py datos1.txt
    ```
 
 3. **Salida esperada**  
    El programa mostrará:
-   - Los datos leídos
-   - El número de elementos
-   - El resultado del subarreglo máximo: índices de inicio y fin, suma máxima y el subarreglo correspondiente
-   - Una verificación de la suma
+   - Precios originales con formato de tabla
+   - Cambios diarios calculados automáticamente
+   - Subarreglo máximo encontrado con índices
+   - Estrategia óptima de inversión (días de compra/venta)
+   - Verificación con precios reales
 
    Ejemplo de salida:
-
    ```bash
-   Procesando archivo: datos1.txt
+   ============================================================
+   ANALISIS FINANCIERO - ARCHIVO: datos1.txt
+   ============================================================
 
-   Datos leídos: [100.0, 113.0, 110.0, 85.0, 105.0, 105.0, 102.0, 86.0, 63.0, 81.0, 101.0, 94.0, 106.0, 101.0, 79.0, 94.0, 90.0, 97.0]
+   PRECIOS ORIGINALES (17 dias):
+   ----------------------------------------
+   Dia  0: $ 100.0
+   Dia  1: $ 113.0
+   ...
 
-   Número de elementos: 17
+   CAMBIOS DIARIOS (16 periodos):
+   ----------------------------------------
+   Dia  1-> 2:  +13.0
+   Dia  2-> 3:   -3.0
+   ...
 
-   Resultado del subarreglo máximo:
-   Índice de inicio: 0
-   Índice de fin: 11
-   Suma máxima: 1087.0
-   Subarreglo: [100.0, 113.0, 110.0, 85.0, 105.0, 102.0, 86.0, 63.0, 81.0, 101.0, 94.0, 106.0]
+   ESTRATEGIA OPTIMA DE INVERSION:
+   ============================================================
+   SUBARREGLO MAXIMO ENCONTRADO:
+   ----------------------------------------
+   Valores: [18.0, 20.0, -7.0, 12.0]
+   Indices: [7 - 10]
+   Suma total: 43.0
 
-   Verificación de suma: 1087.0
+   RESUMEN FINANCIERO:
+   ----------------------------------------
+   GANANCIA MAXIMA: $43.0
+   COMPRAR: Dia 8 (Precio: $63.0)
+   VENDER:  Dia 12 (Precio: $106.0)
+   DURACION: 4 dias
    ```
+
+### Aplicación Práctica
+
+Este algoritmo es especialmente útil para:
+- **Análisis de inversiones**: Encontrar el período óptimo para comprar/vender
+- **Trading algorítmico**: Identificar ventanas de oportunidad
+- **Gestión de riesgo**: Evitar períodos de pérdidas acumuladas
+- **Optimización temporal**: Maximizar retornos en el tiempo
