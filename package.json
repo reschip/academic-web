@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:static": "astro build && node scripts/make-relative-simple.js",
-    "build:subdir": "astro build && node scripts/make-subdirectory.js",
     "preview": "astro preview",
     "astro": "astro"
   },
