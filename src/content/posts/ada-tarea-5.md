@@ -5,7 +5,7 @@ pubDate: 2025-10-9
 heroImage: "/~andres.cruz/images/posts/Tarea5.png"
 tags: ["algoritmos", "aleatorizados", "probabilidad"]
 course: "Algorithm Analysis and Design"
-readTime: "1 min read"
+readTime: "5 min read"
 imageType: 1
 ---
 
