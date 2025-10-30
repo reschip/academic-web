@@ -1,12 +1,24 @@
 ---
-title: "Análisis y Diseño de Algoritmos - Tarea 6"
-description: "Sexta tarea del curso de Análisis y Diseño de Algoritmos enfocada en el algoritmo Heapsort."
-pubDate: 2025-10-26
+title: "Tarea 6: Ordenamiento del montón"
+description: "Implementación en Python del algoritmo Heapsort con múltiples ejecuciones y datos de entrada variados."
+pubDate: 2025-10-28
 heroImage: "/~andres.cruz/images/posts/Tarea6.png"
 tags: ["heapsort", "algoritmos", "ordenamiento", "heap"]
-course: "Algorithm Analysis and Design"
+course: "Análisis y Diseño de Algoritmos"
 readTime: "8 min read"
 imageType: 1
+---
+
+## Información de la Tarea
+
+**Estudiante:** Andrés Cruz Chipol  
+**Curso:** Análisis y Diseño de Algoritmos  
+**Fecha de entrega:** Martes 28 de octubre, 2025
+
+## Descripción de la Tarea
+
+Programar en python el ordenamiento del montón. Mostrar al menos tres ejecuciones con datos de entrada distintos, tal vez revolviendo aleatoriamente el arreglo de entrada.
+
 ---
 
 # Algoritmo Heapsort

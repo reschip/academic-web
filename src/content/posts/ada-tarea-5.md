@@ -1,15 +1,27 @@
 ---
-title: "Análisis y Diseño de Algoritmos - Tarea 5"
-description: "Quinta tarea del curso de Análisis y Diseño de Algoritmos enfocada en algoritmos aleatorizados."
-pubDate: 2025-10-9
+title: "Tarea 5: Algoritmos aleatorizados"
+description: "Implementación y análisis de algoritmos aleatorizados: contratación de asistentes y algoritmo de Las Vegas."
+pubDate: 2025-10-16
 heroImage: "/~andres.cruz/images/posts/Tarea5.png"
 tags: ["algoritmos", "aleatorizados", "probabilidad"]
-course: "Algorithm Analysis and Design"
+course: "Análisis y Diseño de Algoritmos"
 readTime: "5 min read"
 imageType: 1
 ---
 
+## Información de la Tarea
+
+**Estudiante:** Andrés Cruz Chipol  
+**Curso:** Análisis y Diseño de Algoritmos  
+**Fecha de entrega:** Jueves 16 de octubre, 2025
+
 ## Descripción de la Tarea
+
+- Probar el algoritmo de la contratación de asistentes
+- Reproducir su distribución de probabilidad realizando muchas contrataciones
+- Reproducir también la distribución de probabilidades y las tiradas promedio del algoritmo de Las Vegas para encontrar una 'a' en un arreglo con la mitad de elementos igual a 'a's y la otra mitad igual a 'b's
+
+---
 
 En esta tarea implementamos y analizamos dos algoritmos aleatorizados en Python: un enfoque clásico de contratación aleatoria y un algoritmo de tipo Las Vegas. Para cada caso mostramos la implementación, su análisis de comportamiento esperado y resultados experimentales con distribución empírica.
 

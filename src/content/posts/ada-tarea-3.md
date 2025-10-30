@@ -1,16 +1,22 @@
 ---
-title: "Análisis y Diseño de Algoritmos - Tarea 3"
-description: "Tercera tarea del curso de Análisis y Diseño de Algoritmos enfocada en Búsqueda del subarreglo máximo
-."
-pubDate: 2025-10-01
+title: "Tarea 3: Búsqueda del subarreglo máximo"
+description: "Implementación en Python del algoritmo de subarreglo máximo usando divide y vencerás."
+pubDate: 2025-09-30
 heroImage: "/~andres.cruz/images/posts/Tarea3.png"
 tags: ["python", "algoritmos", "divide y venceras"]
-course: "Algorithm Analysis and Design"
+course: "Análisis y Diseño de Algoritmos"
 readTime: "5 min read"
 imageType: 1
 ---
 
+## Información de la Tarea
+
+**Estudiante:** Andrés Cruz Chipol  
+**Curso:** Análisis y Diseño de Algoritmos  
+**Fecha de entrega:** Martes 30 de septiembre, 2025
+
 ## Descripción de la Tarea
+
 Programar en python y verificar el resultado del problema del subarreglo máximo.
 
 ## ¿Qué es el Algoritmo de Subarreglo Máximo?

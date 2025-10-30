@@ -1,17 +1,23 @@
 ---
-title: "Análisis y Diseño de Algoritmos - Tarea 4"
-description: "Cuarta tarea del curso de Análisis y Diseño de Algoritmos enfocada en resolución de recurrencias."
+title: "Tarea 4: Ecuaciones de recurrencia"
+description: "Resolución de problemas de ecuaciones de recurrencia aplicando diferentes métodos de análisis."
 pubDate: 2025-10-07
 heroImage: "/~andres.cruz/images/posts/Tarea4.png"
 tags: ["recurrencias", "algoritmos", "analisis"]
-course: "Algorithm Analysis and Design"
+course: "Análisis y Diseño de Algoritmos"
 readTime: "1 min read"
 imageType: 1
 ---
 
+## Información de la Tarea
+
+**Estudiante:** Andrés Cruz Chipol  
+**Curso:** Análisis y Diseño de Algoritmos  
+**Fecha de entrega:** Martes 7 de octubre, 2025
+
 ## Descripción de la Tarea
 
-Tarea 4 - Resolución de Recurrencias
+Resolver estos dos problemas de ecuaciones de recurrencia.
 
 ## Documento de la Tarea
 
