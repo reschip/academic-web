@@ -1,0 +1,146 @@
+================================================================================
+ÁRBOL ROJO-NEGRO - PSEUDOCÓDIGO (basado en Cormen - CLRS)
+================================================================================
+
+NOTA: Las operaciones básicas como BUSCAR, MÍNIMO, MÁXIMO, SUCESOR y PREDECESOR
+son las mismas que en un Árbol de Búsqueda Binaria (BST). 
+
+Las siguientes son las operaciones adicionales necesarias para crear y mantener
+un Árbol Rojo-Negro a partir de un BST:
+
+--------------------------------------------------------------------------------
+LEFT-ROTATE(T, x)
+--------------------------------------------------------------------------------
+1   y = x.right                     // y es el hijo derecho de x
+2   x.right = y.left                // el subárbol izq de y pasa a ser subárbol der de x
+3   if y.left ≠ T.nil
+4       y.left.p = x
+5   y.p = x.p                       // el padre de x ahora es padre de y
+6   if x.p == T.nil
+7       T.root = y
+8   elseif x == x.p.left
+9       x.p.left = y
+10  else x.p.right = y
+11  y.left = x                      // x pasa a ser hijo izquierdo de y
+12  x.p = y
+
+--------------------------------------------------------------------------------
+RIGHT-ROTATE(T, x)
+--------------------------------------------------------------------------------
+1   y = x.left                      // y es el hijo izquierdo de x
+2   x.left = y.right                // el subárbol der de y pasa a ser subárbol izq de x
+3   if y.right ≠ T.nil
+4       y.right.p = x
+5   y.p = x.p                       // el padre de x ahora es padre de y
+6   if x.p == T.nil
+7       T.root = y
+8   elseif x == x.p.right
+9       x.p.right = y
+10  else x.p.left = y
+11  y.right = x                     // x pasa a ser hijo derecho de y
+12  x.p = y
+
+--------------------------------------------------------------------------------
+RB-INSERT(T, z)
+--------------------------------------------------------------------------------
+1   y = T.nil
+2   x = T.root
+3   while x ≠ T.nil
+4       y = x
+5       if z.key < x.key
+6           x = x.left
+7       else x = x.right
+8   z.p = y
+9   if y == T.nil
+10      T.root = z
+11  elseif z.key < y.key
+12      y.left = z
+13  else y.right = z
+14  z.left = T.nil
+15  z.right = T.nil
+16  z.color = RED
+17  RB-INSERT-FIXUP(T, z)
+
+--------------------------------------------------------------------------------
+RB-INSERT-FIXUP(T, z)
+--------------------------------------------------------------------------------
+1   while z.p.color == RED
+2       if z.p == z.p.p.left
+3           y = z.p.p.right         // y es el tío de z
+4           if y.color == RED                       // Caso 1
+5               z.p.color = BLACK
+6               y.color = BLACK
+7               z.p.p.color = RED
+8               z = z.p.p
+9           else if z == z.p.right                  // Caso 2
+10              z = z.p
+11              LEFT-ROTATE(T, z)
+12              z.p.color = BLACK                   // Caso 3
+13              z.p.p.color = RED
+14              RIGHT-ROTATE(T, z.p.p)
+15      else (igual que arriba con "right" y "left" intercambiados)
+16  T.root.color = BLACK
+
+--------------------------------------------------------------------------------
+RB-TRANSPLANT(T, u, v)
+--------------------------------------------------------------------------------
+1   if u.p == T.nil
+2       T.root = v
+3   elseif u == u.p.left
+4       u.p.left = v
+5   else u.p.right = v
+6   v.p = u.p
+
+--------------------------------------------------------------------------------
+RB-DELETE(T, z)
+--------------------------------------------------------------------------------
+1   y = z
+2   y-original-color = y.color
+3   if z.left == T.nil
+4       x = z.right
+5       RB-TRANSPLANT(T, z, z.right)
+6   elseif z.right == T.nil
+7       x = z.left
+8       RB-TRANSPLANT(T, z, z.left)
+9   else y = TREE-MINIMUM(z.right)
+10      y-original-color = y.color
+11      x = y.right
+12      if y.p == z
+13          x.p = y
+14      else RB-TRANSPLANT(T, y, y.right)
+15          y.right = z.right
+16          y.right.p = y
+17      RB-TRANSPLANT(T, z, y)
+18      y.left = z.left
+19      y.left.p = y
+20      y.color = z.color
+21  if y-original-color == BLACK
+22      RB-DELETE-FIXUP(T, x)
+
+--------------------------------------------------------------------------------
+RB-DELETE-FIXUP(T, x)
+--------------------------------------------------------------------------------
+1   while x ≠ T.root and x.color == BLACK
+2       if x == x.p.left
+3           w = x.p.right                           // w es hermano de x
+4           if w.color == RED                       // Caso 1
+5               w.color = BLACK
+6               x.p.color = RED
+7               LEFT-ROTATE(T, x.p)
+8               w = x.p.right
+9           if w.left.color == BLACK and w.right.color == BLACK  // Caso 2
+10              w.color = RED
+11              x = x.p
+12          else if w.right.color == BLACK          // Caso 3
+13              w.left.color = BLACK
+14              w.color = RED
+15              RIGHT-ROTATE(T, w)
+16              w = x.p.right
+17          w.color = x.p.color                     // Caso 4
+18          x.p.color = BLACK
+19          w.right.color = BLACK
+20          LEFT-ROTATE(T, x.p)
+21          x = T.root
+22      else (igual que arriba con "right" y "left" intercambiados)
+23  x.color = BLACK
+
