@@ -1,23 +1,196 @@
 ---
+/* ProfileSection.astro */
 ---
-<section class="home-intro">
-  <div class="home-intro-content">
-    <div class="home-intro-left">
-      <img src="/~andres.cruz/web-app-manifest-192x192.png" alt="CINVESTAV logo - Center for Research and Advanced Studies" class="cinvestav-logo" loading="lazy" />
-      <div class="cinvestav-text">
-        <p class="cinvestav-title cinvestav-green">CINVESTAV</p>
-        <p class="cinvestav-program">M.Sc. in Computer Science</p>
-        <p class="cinvestav-year">First-year master's student</p>
-        <p class="cinvestav-location">Mexico City, Mexico</p>
-        <p class="cinvestav-desc">Center for Research and Advanced Studies of the IPN.<br />
-        Research-oriented program in AI, algorithms, and computational systems.</p>
+
+<section class="section-wrapper">
+  <div class="profile-card">
+
+    <div class="visual-col">
+      <div class="avatar-circle">
+        <img
+          src="/~andres.cruz/image-about.jpeg"
+          alt="Andrés Cruz Chipol"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="logo-badge">
+        <img
+          src="/~andres.cruz/web-app-manifest-192x192.png"
+          alt="Cinvestav Logo"
+          class="rounded-logo"
+        />
       </div>
     </div>
-    <div class="home-intro-right">
-      <img src="/~andres.cruz/image-about.jpeg" alt="Andrés Cruz Chipol - CINVESTAV Computer Science Master's Student" class="aboutme-photo" loading="lazy" />
-      <p class="mini-about-title">About Me</p>
-      <p class="mini-about-desc">Passionate about AI, algorithms, and technology. Currently pursuing a Master's at Cinvestav, focused on Machine Learning and Computer Vision.</p>
-      <a href="/~andres.cruz/about/" class="view-more-btn">Read more</a>
+
+    <div class="info-col">
+
+      <div class="header-block">
+        <h2 class="main-title">M.Sc. in Computer Science</h2>
+        <div class="meta-line">
+          <span class="highlight">First-year Master's Student</span>
+          <span class="dot">•</span>
+          <span class="location">Mexico City, Mexico</span>
+        </div>
+      </div>
+
+      <p class="bio-text">
+        Passionate about <strong>AI, algorithms, and technology</strong>.
+        Currently focused on Machine Learning and Computer Vision at Cinvestav IPN.
+      </p>
+
+      <a href="/~andres.cruz/about/" class="text-link">Read more &rarr;</a>
     </div>
+
   </div>
 </section>
+
+<style>
+  /* Reset */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .section-wrapper {
+    width: 100%;
+    padding: 4rem 1rem;
+    display: flex;
+    justify-content: center;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  /* TARJETA UNIFICADA */
+  .profile-card {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    align-items: center; /* Alineación vertical perfecta */
+    gap: 2.5rem;
+
+    max-width: 850px;
+    width: 100%;
+  }
+
+  /* --- COLUMNA VISUAL --- */
+  .visual-col {
+    position: relative;
+    flex-shrink: 0; /* Evita que se deforme */
+  }
+
+  .avatar-circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff; /* Borde blanco alrededor de tu foto */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* --- LOGO REDONDEADO --- */
+  .logo-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 42px;
+    height: 42px;
+    background: white;
+    border-radius: 50%; /* La burbuja contenedora es redonda */
+    padding: 0px; /* Un pequeño borde blanco entre foto y logo */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+    /* Centrar el logo dentro de la burbuja */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rounded-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen */
+    border-radius: 50%; /* AQUÍ ESTÁ EL CAMBIO: Fuerza al logo a ser redondo */
+  }
+
+  /* --- COLUMNA INFORMACIÓN --- */
+  .info-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .meta-line {
+    font-size: 0.95rem;
+    color: #4b5563;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .highlight { color: #009ca6; font-weight: 600; }
+  .dot { color: #d1d5db; }
+
+  .bio-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #374151;
+    max-width: 55ch;
+    margin: 0;
+  }
+
+  .text-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .text-link:hover {
+    border-bottom-color: #009ca6;
+  }
+
+  /* --- MÓVIL --- */
+  @media (max-width: 768px) {
+    .profile-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .info-col {
+      align-items: center;
+    }
+
+    .meta-line {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .dot { display: none; }
+
+    .main-title { font-size: 1.5rem; }
+  }
+</style>

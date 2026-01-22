@@ -1,83 +1,177 @@
 ---
-// CurrentCourses component
-export interface Task {
-    title: string;
-    dueDate?: string;
+interface Course {
+  title: string;
+  description: string;
 }
 
-export interface Course {
-    title: string;
-    description: string;
-    tasks?: Task[];
+interface Props {
+  currentCourses?: Course[];
+  previousCourses?: Course[];
 }
 
-export interface Props {
-    title?: string;
-    courses?: Course[];
-    tasks?: Task[];
-}
-
-const { 
-    title = "Current Courses",
-    courses = [
-        {
-            title: "Algorithm Analysis and Design",
-            description: "Efficiency, complexity, and optimization of algorithms. Study of computational complexity and algorithm design techniques."
-        },
-        {
-            title: "Artificial Intelligence",
-            description: "Introduction to AI concepts, machine learning fundamentals, and intelligent systems."
-        },
-        {
-            title: "Advanced Programming",
-            description: "Advanced programming techniques, software engineering, and system design."
-        },
-        {
-            title: "Discrete Mathematics",
-            description: "Mathematical foundations for computer science including logic, set theory, combinatorics, and graph theory."
-        }
-    ],
-    tasks = [
-        {
-            title: "Assignment 1: Line Drawing",
-            dueDate: "September 15, 2025"
-        },
-        {
-            title: "Assignment 2: Complexity Analysis",
-            dueDate: "October 8, 2025"
-        },
-        {
-            title: "Assignment 3: Maximum Subarray Problem",
-            dueDate: "October 2, 2025"
-        }
-    ]
+const {
+  currentCourses = [
+    {
+      title: "Machine Learning",
+      description: "Study of algorithms and statistical models. Covers supervised and unsupervised learning, neural networks, and model evaluation."
+    },
+    {
+      title: "Theory of Computation",
+      description: "Fundamental concepts including automata theory, formal languages, computability, and complexity theory."
+    },
+    {
+      title: "Game Theory",
+      description: "Strategic decision-making analysis. Competitive scenarios, Nash equilibrium, and applications in CS."
+    },
+    {
+      title: "Computer Architecture",
+      description: "Processor architecture, memory hierarchy, instruction sets, and performance optimization."
+    }
+  ],
+  previousCourses = [
+    { title: "Algorithm Analysis", description: "Efficiency and complexity." },
+    { title: "Artificial Intelligence", description: "Intro to AI and agents." },
+    { title: "Advanced Programming", description: "Software engineering." },
+    { title: "Discrete Mathematics", description: "Logic and graph theory." }
+  ]
 } = Astro.props;
 ---
 
-<section class="current-courses">
-    <h3>{title}</h3>
-    
-    <div class="courses-grid">
-        {courses.map(course => (
-            <div class="course-card">
-                <h4 class="course-title">{course.title}</h4>
-                <p class="course-description">{course.description}</p>
-            </div>
-        ))}
-    </div>
-    
-    <div class="tasks-section">
-        <h3>Tasks</h3>
-        
-        <div class="tasks-list">
-            {tasks.map(task => (
-                <div class="task-item">
-                    <h4 class="task-title">{task.title}</h4>
-                    {task.dueDate && (
-                        <p class="task-due-date">Due: {task.dueDate}</p>
-                    )}
-                </div>
-            ))}
+<div class="academic-wrapper">
+
+  <section class="course-section">
+    <h2 class="section-title">Current Courses</h2>
+
+    <div class="list-container">
+      {currentCourses.map(course => (
+        <div class="course-row current">
+          <div class="course-head">
+            <h3 class="course-name">{course.title}</h3>
+          </div>
+          <p class="course-desc">{course.description}</p>
         </div>
+      ))}
     </div>
-</section>
+  </section>
+
+  <section class="course-section">
+    <h2 class="section-title muted">Previous Courses</h2>
+
+    <div class="list-container">
+      {previousCourses.map(course => (
+        <div class="course-row previous">
+          <div class="course-head">
+            <h3 class="course-name">{course.title}</h3>
+          </div>
+          <p class="course-desc">{course.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</div>
+
+<style>
+  /* Reset básico local */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Contenedor fluido: ocupa el 100% del padre, sin centrar nada extra */
+  .academic-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Separación vertical entre bloques 'Current' y 'Previous' */
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  /* --- Bloque de Sección --- */
+  .course-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #111; /* Línea fuerte de separación */
+  }
+
+  .section-title.muted {
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb; /* Línea suave para históricos */
+  }
+
+  /* --- Lista de Cursos --- */
+  .list-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Cada fila del curso */
+  .course-row {
+    display: grid;
+    /* Grid asimétrico: Título (25%) - Descripción (Resto) */
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  /* Quitar borde al último elemento de cada lista */
+  .course-row:last-child {
+    border-bottom: none;
+  }
+
+  /* --- Tipografía --- */
+  .course-head {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .course-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .course-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+
+  /* Estilos específicos: Current */
+  .course-row.current .course-name {
+    color: #009ca6; /* Acento de color (Verde/Teal) */
+  }
+
+  /* Estilos específicos: Previous */
+  .course-row.previous {
+    padding: 1rem 0; /* Un poco más compactos */
+  }
+
+  .course-row.previous .course-name {
+    color: #374151; /* Gris oscuro */
+    font-weight: 600;
+  }
+
+  .course-row.previous .course-desc {
+    font-size: 0.95rem;
+    color: #9ca3af; /* Gris claro */
+  }
+
+  /* --- Responsive (Mobile) --- */
+  @media (max-width: 768px) {
+    .course-row {
+      grid-template-columns: 1fr; /* Una sola columna */
+      gap: 0.5rem;
+    }
+
+    .course-desc {
+      padding-left: 0;
+    }
+  }
+</style>
